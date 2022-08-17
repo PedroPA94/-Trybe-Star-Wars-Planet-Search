@@ -68,6 +68,19 @@ function PlanetsProvider({ children }) {
     setFilteredColumns([...filteredColumns, column]);
   };
 
+  const removeNumericFilter = (column) => {
+    const { filterByNumericValues } = filters;
+    let updatedFilter = [];
+    if (column !== 'removeAll') {
+      updatedFilter = filterByNumericValues
+        .filter((filter) => filter.column !== column);
+    }
+    setFilters({
+      ...filters,
+      filterByNumericValues: updatedFilter,
+    });
+  };
+
   const { Provider } = PlanetsContext;
   return (
     <Provider
@@ -75,7 +88,8 @@ function PlanetsProvider({ children }) {
         addFilters,
         filters,
         filteredColumns,
-        addNewColumnFilter } }
+        addNewColumnFilter,
+        removeNumericFilter } }
     >
       {children}
     </Provider>
