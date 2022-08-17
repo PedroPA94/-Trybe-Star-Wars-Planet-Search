@@ -4,8 +4,11 @@ import PlanetsContext from './PlanetsContext';
 
 function PlanetsProvider({ children }) {
   const [planets, setPlanets] = useState([]);
-  const [filters, setFilters] = useState({});
   const [filteredPlanets, setFilteredPlanets] = useState([]);
+  const [filters, setFilters] = useState({
+    filterByName: { name: '' },
+    filterByNumericValues: [],
+  });
 
   useEffect(() => {
     const getPlanets = async () => {
@@ -27,13 +30,30 @@ function PlanetsProvider({ children }) {
   }, []);
 
   useEffect(() => {
-    const applyFilters = () => {
-      const { filterByName } = filters;
-      const planetsByName = planets.filter(({ name }) => (
+    const applyFiltersToPlanets = () => {
+      const { filterByName, filterByNumericValues } = filters;
+      let newFilteredPlanets = planets.filter(({ name }) => (
         name.toLowerCase().includes(filterByName.name.toLowerCase())));
-      setFilteredPlanets(planetsByName);
+      if (filterByNumericValues.length > 0) {
+        filterByNumericValues.forEach((filter) => {
+          const { column, comparison, value } = filter;
+          newFilteredPlanets = newFilteredPlanets.filter((planet) => {
+            switch (comparison) {
+            case 'maior que':
+              return parseInt(planet[column], 10) > parseInt(value, 10);
+            case 'menor que':
+              return parseInt(planet[column], 10) < parseInt(value, 10);
+            case 'igual a':
+              return parseInt(planet[column], 10) === parseInt(value, 10);
+            default:
+              return true;
+            }
+          });
+        });
+      }
+      setFilteredPlanets(newFilteredPlanets);
     };
-    applyFilters();
+    applyFiltersToPlanets();
   }, [filters]);
 
   const addFilters = (key, value) => {
