@@ -4,6 +4,8 @@ import PlanetsContext from './PlanetsContext';
 
 function PlanetsProvider({ children }) {
   const [planets, setPlanets] = useState([]);
+  const [filters, setFilters] = useState({});
+  const [filteredPlanets, setFilteredPlanets] = useState([]);
 
   useEffect(() => {
     const getPlanets = async () => {
@@ -16,6 +18,7 @@ function PlanetsProvider({ children }) {
           return planet;
         });
         setPlanets(planetsFiltered);
+        setFilteredPlanets(planetsFiltered);
       } catch (error) {
         console.log(error);
       }
@@ -23,9 +26,26 @@ function PlanetsProvider({ children }) {
     getPlanets();
   }, []);
 
+  useEffect(() => {
+    const applyFilters = () => {
+      const { filterByName } = filters;
+      const planetsByName = planets.filter(({ name }) => (
+        name.toLowerCase().includes(filterByName.name.toLowerCase())));
+      setFilteredPlanets(planetsByName);
+    };
+    applyFilters();
+  }, [filters]);
+
+  const addFilters = (key, value) => {
+    setFilters({
+      ...filters,
+      [key]: value,
+    });
+  };
+
   const { Provider } = PlanetsContext;
   return (
-    <Provider value={ { planets } }>
+    <Provider value={ { filteredPlanets, addFilters, filters } }>
       {children}
     </Provider>
   );
