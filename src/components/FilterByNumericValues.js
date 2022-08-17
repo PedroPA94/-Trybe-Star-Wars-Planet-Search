@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PlanetsContext from '../context/PlanetsContext';
 
 function FilterByNumericValues() {
@@ -8,13 +8,24 @@ function FilterByNumericValues() {
     value: 0,
   });
 
-  const { addFilters, filters } = useContext(PlanetsContext);
+  const { addFilters, filters, filteredColumns,
+    addNewColumnFilter } = useContext(PlanetsContext);
 
-  const columnsSelect = ['population', 'orbital_period',
+  const columnsOptions = ['population', 'orbital_period',
     'diameter', 'rotation_period', 'surface_water'];
+  const columnsSelect = columnsOptions.filter((option) => (
+    !filteredColumns.includes(option)
+  ));
   const comparisonSelect = ['maior que', 'menor que', 'igual a'];
 
   const prevFilters = filters.filterByNumericValues || [];
+
+  useEffect(() => {
+    setNewFilter({
+      ...newFilter,
+      column: columnsSelect[0],
+    });
+  }, [filteredColumns]);
 
   const handleChange = ({ target }) => {
     setNewFilter({
@@ -67,7 +78,10 @@ function FilterByNumericValues() {
       </label>
       <button
         type="button"
-        onClick={ () => addFilters('filterByNumericValues', [...prevFilters, newFilter]) }
+        onClick={ () => {
+          addFilters('filterByNumericValues', [...prevFilters, newFilter]);
+          addNewColumnFilter(newFilter.column);
+        } }
         data-testid="button-filter"
       >
         Adicionar filtro

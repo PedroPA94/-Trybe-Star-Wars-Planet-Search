@@ -9,6 +9,7 @@ function PlanetsProvider({ children }) {
     filterByName: { name: '' },
     filterByNumericValues: [],
   });
+  const [filteredColumns, setFilteredColumns] = useState([]);
 
   useEffect(() => {
     const getPlanets = async () => {
@@ -63,9 +64,19 @@ function PlanetsProvider({ children }) {
     });
   };
 
+  const addNewColumnFilter = (column) => {
+    setFilteredColumns([...filteredColumns, column]);
+  };
+
   const { Provider } = PlanetsContext;
   return (
-    <Provider value={ { filteredPlanets, addFilters, filters } }>
+    <Provider
+      value={ { filteredPlanets,
+        addFilters,
+        filters,
+        filteredColumns,
+        addNewColumnFilter } }
+    >
       {children}
     </Provider>
   );
