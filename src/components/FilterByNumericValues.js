@@ -18,7 +18,7 @@ function FilterByNumericValues() {
   ));
   const comparisonSelect = ['maior que', 'menor que', 'igual a'];
 
-  const prevFilters = filters.filterByNumericValues || [];
+  const prevFilters = filters.filterByNumericValues;
 
   useEffect(() => {
     setNewFilter({
@@ -35,7 +35,7 @@ function FilterByNumericValues() {
   };
 
   return (
-    <form onSubmit={ (event) => event.preventDefault() }>
+    <form>
       <label htmlFor="column">
         Coluna:
         <select

@@ -44,10 +44,8 @@ function PlanetsProvider({ children }) {
               return parseInt(planet[column], 10) > parseInt(value, 10);
             case 'menor que':
               return parseInt(planet[column], 10) < parseInt(value, 10);
-            case 'igual a':
-              return parseInt(planet[column], 10) === parseInt(value, 10);
             default:
-              return true;
+              return parseInt(planet[column], 10) === parseInt(value, 10);
             }
           });
         });
