@@ -104,16 +104,16 @@ describe('Os filtros por valores numéricos:', () => {
     const selectComparison = screen.getByTestId("comparison-filter");
     const inputValue = screen.getByTestId("value-filter");
     const buttonFilter = screen.getByTestId("button-filter");
-    const orbitalOption = screen.getByRole('option', { name: /orbital_period/i})
+    const orbitalOption = screen.getAllByRole('option', { name: /orbital_period/i})
 
-    expect(orbitalOption).toBeInTheDocument();
+    expect(orbitalOption[0]).toBeInTheDocument();
 
     userEvent.selectOptions(selectColumn, 'orbital_period');
     userEvent.selectOptions(selectComparison, 'menor que');
     userEvent.type(inputValue, '400');
     userEvent.click(buttonFilter);
 
-    expect(orbitalOption).not.toBeInTheDocument();
+    expect(orbitalOption[0]).not.toBeInTheDocument();
   });
 
   it('É possível excluir filtros aplicados individualmente', async () => {
@@ -176,5 +176,40 @@ describe('Os filtros por valores numéricos:', () => {
   
     const unfilteredRows = screen.getAllByRole('row');
     expect(unfilteredRows.length).toBe(11);
-  })
+  });
+});
+
+describe('A funcionalidade de ordenação da tabela', () => {
+  it('Ordena corretamente a população de forma ascendente', async () => {
+    await waitFor(() => renderWithContext(<App />));
+    
+    const columnSort = screen.getByTestId("column-sort");
+    const orderSortAsc = screen.getByTestId("column-sort-input-asc");
+    const sortButton  = screen.getByTestId("column-sort-button");
+
+    userEvent.selectOptions(columnSort, 'population');
+    userEvent.click(orderSortAsc);
+    userEvent.click(orderSortAsc);
+    userEvent.click(sortButton);
+
+    const rows = screen.getAllByRole('row');
+    expect(rows[1].children[0].textContent).toBe('Yavin IV');
+    expect(rows[10].children[8].textContent).toBe('unknown');
+  });
+
+  it('Ordena corretamente a surface_water de forma descendente', async () => {
+    await waitFor(() => renderWithContext(<App />));
+    
+    const columnSort = screen.getByTestId("column-sort");
+    const orderSortDesc = screen.getByTestId("column-sort-input-desc");
+    const sortButton  = screen.getByTestId("column-sort-button");
+
+    userEvent.selectOptions(columnSort, 'surface_water');
+    userEvent.click(orderSortDesc);
+    userEvent.click(sortButton);
+
+    const rows = screen.getAllByRole('row');
+    expect(rows[1].children[0].textContent).toBe('Hoth');
+    expect(rows[10].children[7].textContent).toBe('unknown');
+  });
 });

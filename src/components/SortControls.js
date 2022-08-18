@@ -38,7 +38,6 @@ function SortControls() {
           value="ASC"
           onChange={ ({ target }) => setSelectedSort({
             order: { ...order, sort: target.value } }) }
-          checked
         />
         <input
           type="radio"
