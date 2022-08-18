@@ -1,0 +1,121 @@
+.controls {
+  align-items: flex-end;
+  display: flex;
+  font-size: 16px;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  padding: 20px;
+}
+
+.controls button {
+  background-color: #dba80e;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  padding: 6px;
+  text-transform: uppercase;
+  width: 150px;
+}
+
+.applied-filters button {
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.single-filter button {
+  background-color: transparent;
+  padding: 0;
+  width: auto;
+}
+
+.controls button:hover {
+  cursor: pointer;
+  scale: 95%;
+}
+
+.controls select, input {
+  background-color: white;
+  border: 2px solid #dba80e;
+  border-radius: 5px;
+  font-family: monospace;
+  font-size: 16px;
+  margin-left: 5px;
+  margin-right: 20px;
+  max-width: 150px;
+  outline: none;
+  padding: 3px 7px;
+}
+
+.sort-controls {
+  align-items: center;
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+}
+
+.sort-order {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  margin-right: 15px;
+}
+
+.radio-inputs {
+  display: flex;
+  gap: 3px;
+}
+
+/* radios baseados em: https://moderncss.dev/pure-css-custom-styled-radio-buttons/ */
+.sort-controls [ type = 'radio' ] {
+  appearance: none;
+  background-color: white;
+  border: 0.15em solid #dba80e;
+  border-radius: 50%;
+  color: #dba80e;
+  display: grid;
+  font: inherit;
+  height: 1.15em;
+  margin: 0;
+  place-content: center;
+  transform: translateY(-0.075em);
+  width: 1.15em;
+}
+
+.sort-controls [ type = 'radio' ]:before {
+  border-radius: 50%;
+  box-shadow: inset 1em 1em #dba80e;
+  content: '';
+  height: 0.65em;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  width: 0.65em;
+}
+
+.sort-controls [ type = 'radio' ]:checked:before {
+  transform: scale(1);
+}
+
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.filters input:focus {
+  border: 2px solid #83650a;
+}
+
+.single-filter {
+  display: flex;
+}
+
+.remove-filter-icon {
+  color: #dba80e;
+  height: 22px;
+  margin-left: 20px;
+  width: auto;
+}

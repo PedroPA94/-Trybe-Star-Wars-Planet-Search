@@ -84,7 +84,7 @@ function FilterByNumericValues() {
         } }
         data-testid="button-filter"
       >
-        Adicionar filtro
+        Filtrar
       </button>
     </form>
   );

@@ -1,4 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@900&family=Roboto:wght@100;300;400;500;700;900&display=swap') ;
+
 .App {
+  font-family: monospace;
+}
+
+/* .App {
   text-align: center;
 }
 
@@ -38,4 +44,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */

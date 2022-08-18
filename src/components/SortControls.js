@@ -13,7 +13,7 @@ function SortControls() {
     'diameter', 'rotation_period', 'surface_water'];
   const { order } = selectedSort;
   return (
-    <form>
+    <form className="sort-controls">
       <label htmlFor="column-sort">
         Coluna:
         <select
@@ -29,24 +29,32 @@ function SortControls() {
           ))}
         </select>
       </label>
-      <label htmlFor="sort-order">
-        Ordenar:
-        <input
-          type="radio"
-          name="sort-order"
-          data-testid="column-sort-input-asc"
-          value="ASC"
-          onChange={ ({ target }) => setSelectedSort({
-            order: { ...order, sort: target.value } }) }
-        />
-        <input
-          type="radio"
-          name="sort-order"
-          data-testid="column-sort-input-desc"
-          value="DESC"
-          onChange={ ({ target }) => setSelectedSort({
-            order: { ...order, sort: target.value } }) }
-        />
+      <label htmlFor="sort-order" className="sort-order">
+        {/* Ordem: */}
+        <label htmlFor="asc" className="radio-inputs">
+          ASC
+          <input
+            type="radio"
+            name="sort-order"
+            data-testid="column-sort-input-asc"
+            value="ASC"
+            id="asc"
+            onChange={ ({ target }) => setSelectedSort({
+              order: { ...order, sort: target.value } }) }
+          />
+        </label>
+        <label htmlFor="desc" className="radio-inputs">
+          DESC
+          <input
+            type="radio"
+            name="sort-order"
+            data-testid="column-sort-input-desc"
+            value="DESC"
+            id="desc"
+            onChange={ ({ target }) => setSelectedSort({
+              order: { ...order, sort: target.value } }) }
+          />
+        </label>
       </label>
       <button
         type="button"

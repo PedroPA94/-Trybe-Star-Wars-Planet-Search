@@ -1,0 +1,18 @@
+header {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 30px;
+}
+
+header .logo {
+  height: auto;
+  width: 500px;
+}
+
+header .title {
+  height: auto;
+  margin-top: 20px;
+  width: 300px;
+}

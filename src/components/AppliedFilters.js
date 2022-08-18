@@ -1,20 +1,21 @@
 import React, { useContext } from 'react';
+import { FaTrash } from 'react-icons/fa';
 import PlanetsContext from '../context/PlanetsContext';
 
 function AppliedFilters() {
   const { filters: { filterByNumericValues },
     removeNumericFilter } = useContext(PlanetsContext);
   return (
-    <div>
+    <div className="applied-filters">
       <button
         type="button"
         onClick={ () => removeNumericFilter('removeAll') }
         data-testid="button-remove-filters"
       >
-        Remover todos os filtros
+        Remover filtros
       </button>
       {filterByNumericValues.map(({ column, comparison, value }) => (
-        <div key={ column } data-testid="filter">
+        <div key={ column } data-testid="filter" className="single-filter">
           <p>
             <span>
               {column}
@@ -30,7 +31,7 @@ function AppliedFilters() {
             type="button"
             onClick={ () => removeNumericFilter(column) }
           >
-            Excluir
+            <FaTrash className="remove-filter-icon" />
           </button>
         </div>
       ))}
