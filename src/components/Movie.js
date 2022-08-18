@@ -1,6 +1,7 @@
 import React from 'react';
 import film from '../film';
 
+// adapted from: http://www.asciimation.co.nz/
 function Movie() {
   const LINES_PER_FRAME = 14;
   const DELAY_NORMAL = 67;
