@@ -3,6 +3,7 @@ import PlanetsContext from '../context/PlanetsContext';
 import AppliedFilters from './AppliedFilters';
 import FilterByName from './FilterByName';
 import FilterByNumericValues from './FilterByNumericValues';
+import SortControls from './SortControls';
 
 function Controls() {
   const { filters: { filterByNumericValues } } = useContext(PlanetsContext);
@@ -11,6 +12,7 @@ function Controls() {
       <FilterByName />
       <FilterByNumericValues />
       {filterByNumericValues.length > 0 && <AppliedFilters />}
+      <SortControls />
     </div>
   );
 }

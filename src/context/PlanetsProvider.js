@@ -4,12 +4,15 @@ import PlanetsContext from './PlanetsContext';
 
 function PlanetsProvider({ children }) {
   const [planets, setPlanets] = useState([]);
-  const [filteredPlanets, setFilteredPlanets] = useState([]);
+  const [filteredAndSortedPlanets, setFilteredAndSortedPlanets] = useState([]);
   const [filters, setFilters] = useState({
     filterByName: { name: '' },
     filterByNumericValues: [],
   });
   const [filteredColumns, setFilteredColumns] = useState([]);
+  const [sortPlanets, setSortPlanets] = useState({
+    order: { column: 'population', sort: 'ASC' },
+  });
 
   useEffect(() => {
     const getPlanets = async () => {
@@ -22,7 +25,7 @@ function PlanetsProvider({ children }) {
           return planet;
         });
         setPlanets(planetsFiltered);
-        setFilteredPlanets(planetsFiltered);
+        setFilteredAndSortedPlanets(planetsFiltered);
       } catch (error) {
         console.log(error);
       }
@@ -30,11 +33,27 @@ function PlanetsProvider({ children }) {
     getPlanets();
   }, []);
 
+  const applySortToFilteredPlanets = (listOfPlanets) => {
+    const { column, sort } = sortPlanets.order;
+    const setUnknownValuesLast = -1;
+    return listOfPlanets.sort((a, b) => {
+      if (b[column] === 'unknown') {
+        return setUnknownValuesLast;
+      }
+      if (sort === 'DESC') {
+        return parseInt(b[column], 10) - parseInt(a[column], 10);
+      }
+      return parseInt(a[column], 10) - parseInt(b[column], 10);
+    });
+  };
+
   useEffect(() => {
     const applyFiltersToPlanets = () => {
       const { filterByName, filterByNumericValues } = filters;
+
       let newFilteredPlanets = planets.filter(({ name }) => (
         name.toLowerCase().includes(filterByName.name.toLowerCase())));
+
       if (filterByNumericValues.length > 0) {
         filterByNumericValues.forEach((filter) => {
           const { column, comparison, value } = filter;
@@ -50,10 +69,11 @@ function PlanetsProvider({ children }) {
           });
         });
       }
-      setFilteredPlanets(newFilteredPlanets);
+      const newFilteredAndSortedPlanets = applySortToFilteredPlanets(newFilteredPlanets);
+      setFilteredAndSortedPlanets(newFilteredAndSortedPlanets);
     };
     applyFiltersToPlanets();
-  }, [filters]);
+  }, [filters, sortPlanets]);
 
   const addFilters = (key, value) => {
     setFilters({
@@ -82,12 +102,13 @@ function PlanetsProvider({ children }) {
   const { Provider } = PlanetsContext;
   return (
     <Provider
-      value={ { filteredPlanets,
+      value={ { filteredAndSortedPlanets,
         addFilters,
         filters,
         filteredColumns,
         addNewColumnFilter,
-        removeNumericFilter } }
+        removeNumericFilter,
+        setSortPlanets } }
     >
       {children}
     </Provider>

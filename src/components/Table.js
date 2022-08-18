@@ -2,8 +2,10 @@ import React, { useContext } from 'react';
 import PlanetsContext from '../context/PlanetsContext';
 
 function Table() {
-  const { filteredPlanets } = useContext(PlanetsContext);
-  const tableHeaders = filteredPlanets[0] ? Object.keys(filteredPlanets[0]) : [];
+  const { filteredAndSortedPlanets } = useContext(PlanetsContext);
+  const tableHeaders = filteredAndSortedPlanets[0]
+    ? Object.keys(filteredAndSortedPlanets[0])
+    : [];
   return (
     <table>
       <thead>
@@ -16,11 +18,16 @@ function Table() {
         </tr>
       </thead>
       <tbody>
-        {filteredPlanets.map((planet) => (
+        {filteredAndSortedPlanets.map((planet) => (
           <tr key={ planet.name }>
-            {tableHeaders.map((header) => (
-              <td key={ header }>{planet[header]}</td>
-            ))}
+            {tableHeaders.map((header) => {
+              if (header === 'name') {
+                return (
+                  <td key={ planet.name } data-testid="planet-name">{planet.name}</td>
+                );
+              }
+              return <td key={ planet[header] }>{planet[header]}</td>;
+            })}
           </tr>
         ))}
       </tbody>
