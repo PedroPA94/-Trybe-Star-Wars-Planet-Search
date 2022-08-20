@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import film from '../film';
 
-const MOVIE_DELAY = 4000;
+const MOVIE_DELAY = 5000;
 
 // adapted from: http://www.asciimation.co.nz/
 function Movie() {

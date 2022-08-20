@@ -7,7 +7,7 @@ import '../styles/MainPage.css';
 
 function MainPage() {
   return (
-    <div>
+    <div className="page">
       <Header />
       <Controls />
       <Table />

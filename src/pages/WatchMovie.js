@@ -5,7 +5,7 @@ import '../styles/WatchMovie.css';
 
 function WatchMovie() {
   return (
-    <div className="movie-page">
+    <div className="movie-page page">
       <Movie />
       <div className="credits">
         <p>

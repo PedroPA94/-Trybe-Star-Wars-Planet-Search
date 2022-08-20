@@ -1,8 +1,9 @@
 .movie-page {
   align-items: center;
+  animation-delay: 0.5s;
   animation-duration: 3s;
+  animation-fill-mode: forwards;
   animation-name: change-background;
-  background-color: black;
   color: white;
   display: flex;
   flex-direction: column;
@@ -13,13 +14,21 @@
 }
 
 .credits {
-  color: rgba(200, 200, 200, 0.8);
+  animation-delay: 2s;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+  animation-name: change-color;
   line-height: 20px;
+  opacity: 0;
   text-align: center;
 }
 
 .movie-page a {
-  color: rgba(200, 200, 200, 0.8);
+  animation-delay: 2s;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+  animation-name: change-color;
+  opacity: 0;
 }
 
 @keyframes change-background {
@@ -27,4 +36,12 @@
   from { background-color: white;}
 
   to { background-color: black;}
+}
+
+@keyframes change-color {
+
+  from { color: white; }
+
+  to { color: rgba(200, 200, 200, 0.8);
+    opacity: 1;}
 }

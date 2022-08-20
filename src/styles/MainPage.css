@@ -18,7 +18,7 @@
 .link-to-movie:after {
   border-bottom: 20px solid transparent;
   border-left: 20px solid #dba80e;
-  border-top: 20px solid transparent;
+  border-top: 21px solid transparent;
   content: '';
   height: 0;
   position: absolute;
