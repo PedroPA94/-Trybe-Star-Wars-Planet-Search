@@ -1,7 +1,10 @@
 table {
   border-collapse: separate;
   border-spacing: 0;
+  margin: 0 auto;
   margin-bottom: 50px;
+  overflow: auto;
+  width: 99vw;
 }
 
 thead > tr {

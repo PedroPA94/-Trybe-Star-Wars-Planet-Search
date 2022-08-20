@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import film from '../film';
+
+const MOVIE_DELAY = 4000;
 
 // adapted from: http://www.asciimation.co.nz/
 function Movie() {
@@ -57,11 +59,11 @@ function Movie() {
     updateDisplay();
   }
 
-  window.onload = () => Play();
+  useEffect(() => setTimeout(() => Play(), MOVIE_DELAY), []);
 
   return (
     <pre id="screen">
-      Teste
+      {' '}
     </pre>
   );
 }

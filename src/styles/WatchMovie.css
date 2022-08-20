@@ -1,0 +1,30 @@
+.movie-page {
+  align-items: center;
+  animation-duration: 3s;
+  animation-name: change-background;
+  background-color: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  height: 100vh;
+  justify-content: center;
+  width: 100vw;
+}
+
+.credits {
+  color: rgba(200, 200, 200, 0.8);
+  line-height: 20px;
+  text-align: center;
+}
+
+.movie-page a {
+  color: rgba(200, 200, 200, 0.8);
+}
+
+@keyframes change-background {
+
+  from { background-color: white;}
+
+  to { background-color: black;}
+}

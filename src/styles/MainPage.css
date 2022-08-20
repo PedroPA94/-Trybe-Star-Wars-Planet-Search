@@ -1,0 +1,49 @@
+.link-to-movie {
+  animation-delay: 2s;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  animation-name: move-arrow;
+  animation-timing-function: cubic-bezier();
+  background-color: #dba80e;
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 10px 30px 10px 45px;
+  position: absolute;
+  right: 25px;
+  text-decoration: none;
+  top: 150px;
+}
+
+.link-to-movie:after {
+  border-bottom: 20px solid transparent;
+  border-left: 20px solid #dba80e;
+  border-top: 20px solid transparent;
+  content: '';
+  height: 0;
+  position: absolute;
+  right: -20px;
+  top: 0;
+  width: 0;
+}
+
+.link-to-movie:before {
+  border-bottom: 20px solid transparent;
+  border-left: 20px solid white;
+  border-top: 20px solid transparent;
+  content: '';
+  height: 0;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 0;
+}
+
+@keyframes move-arrow {
+
+  0% { right: 25px; }
+
+  10% { right: 60px;}
+
+  20% { right: 25px; }
+}
