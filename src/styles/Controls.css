@@ -109,6 +109,14 @@
   border: 2px solid #83650a;
 }
 
+
+.applied-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: flex-start;
+}
+
 .single-filter {
   display: flex;
 }
