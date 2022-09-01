@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/app-toot-name/static/css/main.dd546e4c.css",
+    "main.js": "/app-toot-name/static/js/main.50aeacae.js",
+    "index.html": "/app-toot-name/index.html",
+    "main.dd546e4c.css.map": "/app-toot-name/static/css/main.dd546e4c.css.map",
+    "main.50aeacae.js.map": "/app-toot-name/static/js/main.50aeacae.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.dd546e4c.css",
+    "static/js/main.50aeacae.js"
+  ]
+}
