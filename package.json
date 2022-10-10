@@ -1,5 +1,6 @@
 {
   "name": "sd-0x-project-react-context-hooks-starwars-datatable-filters",
+  "homepage": "https://pedropa94.github.io/star-wars-planet-search-trybe",
   "version": "0.1.0",
   "private": true,
   "engines": {
@@ -65,5 +66,4 @@
     "stylelint": "13.8.0",
     "stylelint-order": "4.1.0"
   },
-  "homepage": "https://pedropa94.github.io/star-wars-planet-search-trybe"
 }
