@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import App from './App';
 import PlanetsProvider from './context/PlanetsProvider';
 
 ReactDOM.render(
-  <BrowserRouter>
+  <HashRouter>
     <PlanetsProvider>
       <App />
     </PlanetsProvider>
-  </BrowserRouter>,
+  </HashRouter>,
   document.getElementById('root'),
 );
