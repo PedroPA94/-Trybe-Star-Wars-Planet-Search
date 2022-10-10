@@ -8,6 +8,8 @@
 
 Star Wars Planet Search allows you to visualize, compare and filter info on the main Star Wars franchise planets. The aim of this project was to put to practice the studies of React's Context API and Hooks. I've also added a bonus for the hardcore Star Wars fans!
 
+[Check it out!](https://pedropa94.github.io/star-wars-planet-search-trybe/)
+
 This application uses [this API](https://swapi-trybe.herokuapp.com/api/planets/) made by [@betrybe](https://github.com/betrybe)
 
 This project was developed while studying Front-end web development [@betrybe](https://github.com/betrybe). The files I worked on are in the ```/src``` folder. I got approval on 100% of this project's requirements.
