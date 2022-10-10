@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/app-toot-name/static/css/main.dd546e4c.css",
-    "main.js": "/app-toot-name/static/js/main.50aeacae.js",
-    "index.html": "/app-toot-name/index.html",
-    "main.dd546e4c.css.map": "/app-toot-name/static/css/main.dd546e4c.css.map",
-    "main.50aeacae.js.map": "/app-toot-name/static/js/main.50aeacae.js.map"
+    "main.css": "/star-wars-planet-search-trybe/static/css/main.dd546e4c.css",
+    "main.js": "/star-wars-planet-search-trybe/static/js/main.75459c5b.js",
+    "index.html": "/star-wars-planet-search-trybe/index.html",
+    "main.dd546e4c.css.map": "/star-wars-planet-search-trybe/static/css/main.dd546e4c.css.map",
+    "main.75459c5b.js.map": "/star-wars-planet-search-trybe/static/js/main.75459c5b.js.map"
   },
   "entrypoints": [
     "static/css/main.dd546e4c.css",
-    "static/js/main.50aeacae.js"
+    "static/js/main.75459c5b.js"
   ]
 }
