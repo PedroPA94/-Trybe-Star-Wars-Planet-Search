@@ -65,5 +65,5 @@
     "mochawesome-report-generator": "^6.2.0",
     "stylelint": "13.8.0",
     "stylelint-order": "4.1.0"
-  },
+  }
 }
